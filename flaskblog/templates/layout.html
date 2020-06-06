@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+
+    {% if title %}
+        <title>Flask Blog - {{ title }}</title>
+    {% else %}
+        <title>Flask Blog</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark new_bg fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/"><strong>YourSpace</strong></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Post</a>
+                <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Account
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{{ url_for('users.account') }}">Update Account</a>
+      </div>
+    </li>
+                <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+
+    <main role="main" class="container" style="padding-bottom: 10%;">
+      <div style="width:100%;">
+  <marquee>SITE UNDER CONSTRUCTION</marquee>
+</div>
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            {% if current_user.is_authenticated %}
+              <h3>Account Info</h3>
+              <p><strong>Username</strong> : {{current_user.username}}</p>
+              <p><strong>Email</strong> : {{current_user.email}}</p>
+            {% else %}
+            <p>Please Login <a href="{{url_for('users.login')}}">Here</a></p>
+
+            {% endif %}       
+          </div>
+    <div style="border:2px solid green;padding:20px;">
+      <p class="card-text"><h1>3 Simple Steps</h1></p>
+      <p class="card-text">1. Register</p>
+      <p class="card-text">2. Login</p>
+      <p class="card-text">3. Create Post</p>
+   </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div class="footer">
+  All Rights Reserved. Copyright &copy;Avishkar Hande 2020
+<div class="icons" style="float:right;">
+<a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-linkedin"></a>
+<a href="#" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-instagram"></a>
+</div>
+</div>
+</body>
+</html>
