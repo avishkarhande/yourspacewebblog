@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
 from flaskblog.models import User, Post
 from flaskblog.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                                   RequestResetForm, ResetPasswordForm)
+                                   RequestResetForm, ResetPasswordForm, ChangePasswordForm)
 from flaskblog.users.utils import save_picture, send_reset_email
 
 
@@ -110,3 +110,17 @@ def reset_token(token):
 
             
 
+@users.route('/account/change_password', methods=['POST', 'GET'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if bcrypt.check_password_hash(current_user.password, form.current_password.data):
+            hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+            current_user.password = hashed_password
+            db.session.commit()
+            flash("Password change sucessfully", "success")
+        else:
+            flash("Wrong password.", "danger")
+
+    return render_template('change_password.html', form=form)

@@ -4,6 +4,9 @@ body {
   margin-top: 5rem;
 }
 
+#more,#showLess {
+    display: none;
+}
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
@@ -82,17 +85,7 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height:10%;
-   background-color: #563d7c;
-   color: white;
-   text-align: center;
-   padding:1%;
-}
+
 
 .fa {
   padding: 10px;
@@ -215,4 +208,16 @@ a.article-title:hover {
 
 .icons{
 
+}
+
+footer{
+  background-color: #563d7c;
+}
+
+footer a{
+  color:#fff;
+}
+
+footer-copyright{
+  color:#fff;
 }

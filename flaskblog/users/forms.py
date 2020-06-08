@@ -1,3 +1,4 @@
+
   
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
@@ -73,3 +74,9 @@ class ResetPasswordForm(FlaskForm):
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')
 
+class ChangePasswordForm(FlaskForm):
+    current_password = PasswordField('Current Password:', [DataRequired()])
+    new_password = PasswordField('New Password:', [DataRequired()])
+    confirm_new_password = PasswordField('Confirm Password:', [
+        DataRequired(), EqualTo('new_password', message="Paswords don't match.")])
+    submit = SubmitField('Change Password')
