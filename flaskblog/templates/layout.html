@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
-
+    <link rel="icon" href="{{ url_for('static', filename='/profile_pics/fav.jpg') }}" type="image/gif" sizes="20x20">
     {% if title %}
         <title>Flask Blog - {{ title }}</title>
     {% else %}
@@ -56,9 +56,6 @@
 
 
     <main role="main" class="container" style="padding-bottom: 10%;">
-      <div style="width:100%;">
-  <marquee>SITE UNDER CONSTRUCTION</marquee>
-</div>
       <div class="row">
         <div class="col-md-8">
           {% with messages = get_flashed_messages(with_categories=true) %}
@@ -104,11 +101,10 @@
   All Rights Reserved. Copyright &copy;Avishkar Hande 2020
 <div class="icons" style="float:right;">
 <a href="#" class="fa fa-facebook"></a>
-<a href="#" class="fa fa-twitter"></a>
+<a href="https://twitter.com/avishkarhande" class="fa fa-twitter"></a>
 <a href="#" class="fa fa-google"></a>
-<a href="#" class="fa fa-linkedin"></a>
-<a href="#" class="fa fa-youtube"></a>
-<a href="#" class="fa fa-instagram"></a>
+<a href="https://in.linkedin.com/in/avishkar-hande-4869001a5?trk=people-guest_people_search-card" class="fa fa-linkedin"></a>
+<a href="https://instagram.com/avishkaristic" class="fa fa-instagram"></a>
 </div>
 </div>
 </body>
