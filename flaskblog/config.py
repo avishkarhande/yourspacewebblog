@@ -5,6 +5,6 @@ class Config:
 	MAIL_SERVER = 'smtp.gmail.com'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = 1
-	MAIL_USERNAME = 'yourspacewebblog@gmail.com'
-	MAIL_PASSWORD = 'swayam12'
+	MAIL_USERNAME = os.environ['DB_USER']
+	MAIL_PASSWORD = os.environ['DB_PASS']
 	
